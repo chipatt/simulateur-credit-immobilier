@@ -1,5 +1,6 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="monetag" content="7d69d69d4e04f1df3c6115a87be6bbdb"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Simulateur de Crédit Immobilier</title><meta name="description" content="Calculez vos mensualités, le coût total et le tableau d'amortissement de votre prêt immobilier"><meta name="keywords" content="simulateur crédit immobilier, calcul mensualité, prêt immobilier, taux crédit">
+<script src="https://quge5.com/88/tag.min.js" data-zone="220680" async data-cfasync="false"></script>
 <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',system-ui,sans-serif;background:#f5f7fa;color:#1a1a2e;line-height:1.6}
 .hd{background:linear-gradient(135deg,#2D3436,#1a1a2e);color:#fff;padding:25px 0;text-align:center}.hd h1{font-size:clamp(1.3rem,3vw,2rem)}.hd p{opacity:.85;font-size:.9rem}
 .w{max-width:1100px;margin:0 auto;padding:20px}.g{display:grid;grid-template-columns:1fr 300px;gap:25px;margin-top:20px}
@@ -12,8 +13,7 @@ input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;bord
 .faq{margin:25px 0}.faq details{background:#fff;margin:8px 0;padding:15px 20px;border-radius:8px;box-shadow:0 1px 5px rgba(0,0,0,.04)}.faq summary{cursor:pointer;font-weight:600}.faq p{margin-top:10px;color:#555}
 @media(max-width:768px){.g{grid-template-columns:1fr}}
 </style></head><body>
-<div class="hd"><div class="w"><h1>Simulateur de Crédit Immobilier</h1><p>Calculez vos mensualités, le coût total et le tableau d'amortissement de votre prêt immobilier</p></div></div>
-<div class="ad-container" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"><div id="monetag-top"></div><script>(function(d,z,s){s.src="https://boltepse.com/tag.min.js";s.setAttribute("data-zone","VOTRE_ZONE_ID");try{if(typeof d!=="undefined")d.getElementsByTagName("head")[0].appendChild(s);else{throw "undefined"}}catch(e){d.writeln(s.outerHTML)}})(document,0,new Element("script"));</script></div>
+<div class="hd"><div class="w"><h1>Simulateur de Crédit Immobilier</h1><p>Calculez vos mensualités, le coût total et le tableau d'amortissement de votre prêt immobilier</p></div></div><div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
 <div class="w"><div class="g"><div><div class="c"><h2 style="margin-bottom:15px">Simulateur de Crédit Immobilier</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px">
 <div><label>Montant emprunté (€):</label><input type="number" id="amt" value="250000"></div>
@@ -27,10 +27,21 @@ input,select,textarea{width:100%;padding:10px 14px;border:2px solid #e0e0e0;bord
 <script>
 function calc(){const P=+document.getElementById('amt').value,r=+document.getElementById('rate').value/100/12,n=+document.getElementById('dur').value*12,ins=+document.getElementById('ins').value/100/12;
 const M=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);const insM=P*ins;const totalM=M+insM;const totalPaid=totalM*n;const totalInt=totalPaid-P-insM*n;const insTotal=insM*n;
-document.getElementById('res').innerHTML='<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px"><div style="text-align:center;padding:15px;background:#f0fff4;border-radius:10px"><div style="font-size:1.5rem;font-weight:700;color:#2D3436">'+totalM.toFixed(2)+'€</div><div style="font-size:.8rem;color:#666">Mensualité totale</div></div><div style="text-align:center;padding:15px;background:#fff8f0;border-radius:10px"><div style="font-size:1.5rem;font-weight:700;color:#E67E22">'+totalInt.toFixed(0)+'€</div><div style="font-size:.8rem;color:#666">Coût intérêts</div></div><div style="text-align:center;padding:15px;background:#f0f0ff;border-radius:10px"><div style="font-size:1.5rem;font-weight:700;color:#6C5CE7">'+insTotal.toFixed(0)+'€</div><div style="font-size:.8rem;color:#666">Coût assurance</div></div><div style="text-align:center;padding:15px;background:#fff0f0;border-radius:10px"><div style="font-size:1.5rem;font-weight:700;color:#E74C3C">'+totalPaid.toFixed(0)+'€</div><div style="font-size:.8rem;color:#666">Coût total</div></div></div>';
+document.getElementById('res').innerHTML=`
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+<div style="text-align:center;padding:15px;background:#f0fff4;border-radius:10px"><div style="font-size:1.5rem;font-weight:700;color:#2D3436">${totalM.toFixed(2)}€</div><div style="font-size:.8rem;color:#666">Mensualité totale</div></div>
+<div style="text-align:center;padding:15px;background:#fff8f0;border-radius:10px"><div style="font-size:1.5rem;font-weight:700;color:#E67E22">${(totalInt).toFixed(0)}€</div><div style="font-size:.8rem;color:#666">Coût intérêts</div></div>
+<div style="text-align:center;padding:15px;background:#f0f0ff;border-radius:10px"><div style="font-size:1.5rem;font-weight:700;color:#6C5CE7">${insTotal.toFixed(0)}€</div><div style="font-size:.8rem;color:#666">Coût assurance</div></div>
+<div style="text-align:center;padding:15px;background:#fff0f0;border-radius:10px"><div style="font-size:1.5rem;font-weight:700;color:#E74C3C">${totalPaid.toFixed(0)}€</div><div style="font-size:.8rem;color:#666">Coût total</div></div></div>`;
 const tb=document.getElementById('tbody');tb.innerHTML='';document.getElementById('tab').style.display='table';
 let rest=P;for(let y=1;y<=Math.min(+document.getElementById('dur').value,50);y++){let capY=0,intY=0;for(let m=0;m<12;m++){const intM=rest*r;const capM=M-intM;capY+=capM;intY+=intM;rest-=capM}
-tb.innerHTML+='<tr style="border-bottom:1px solid #eee"><td style="padding:6px;text-align:center">'+y+'</td><td style="padding:6px;text-align:center">'+totalM.toFixed(2)+'€</td><td style="padding:6px;text-align:center">'+capY.toFixed(0)+'€</td><td style="padding:6px;text-align:center">'+intY.toFixed(0)+'€</td><td style="padding:6px;text-align:center">'+Math.max(0,rest).toFixed(0)+'€</td></tr>'}}
+tb.innerHTML+=`<tr style="border-bottom:1px solid #eee"><td style="padding:6px;text-align:center">${y}</td><td style="padding:6px;text-align:center">${totalM.toFixed(2)}€</td><td style="padding:6px;text-align:center">${capY.toFixed(0)}€</td><td style="padding:6px;text-align:center">${intY.toFixed(0)}€</td><td style="padding:6px;text-align:center">${Math.max(0,rest).toFixed(0)}€</td></tr>`}}
 </script>
 <div class="faq"><h3>FAQ</h3><details><summary>Comment est calculée la mensualité ?</summary><p>La mensualité est calculée avec la formule d'annuité constante : M = P × r × (1+r)^n / ((1+r)^n - 1), où P est le montant emprunté, r le taux mensuel et n le nombre de mensualités.</p></details>
 <details><summary>Qu'est-ce que le TAEG ?</summary><p>Le Taux Annuel Effectif Global inclut tous les frais (intérêts + assurance + frais de dossier). C'est l'indicateur le plus fiable pour comparer les offres de prêt.</p></details></div></div>
+<div class="sb"><div style="text-align:center;margin:15px 0;min-height:250px;"></div><div class="sbc"><h3>Articles populaires</h3><ul style="list-style:none;padding:0">
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Guide complet 2026</a></li>
+<li style="padding:8px 0;border-bottom:1px solid #eee"><a href="#" style="color:#333;text-decoration:none">Conseils d'experts</a></li>
+<li style="padding:8px 0"><a href="#" style="color:#333;text-decoration:none">FAQ détaillée</a></li></ul></div><div style="text-align:center;margin:15px 0;min-height:250px;"></div></div></div></div><div class="ad-c" style="text-align:center;margin:20px auto;min-height:90px;max-width:728px;"></div>
+<div class="ft"><div class="w"><p>&copy; 2026 Simulateur de Crédit Immobilier</p><p style="margin-top:8px;font-size:.85rem;opacity:.7">Mentions légales | Confidentialité | Contact</p></div></div>
+</body></html>
